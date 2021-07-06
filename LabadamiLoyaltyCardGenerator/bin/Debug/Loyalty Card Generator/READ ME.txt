@@ -1,0 +1,10 @@
+Generating Loyalty Card
+-Fill up the Branch, Address and CP Number Fields Fields.
+-Select the Folder Path where you want to save the Cards.
+-Set the Number of cards you want to generate.
+-Click the Generate button and click OK button in Message box that will pop up.
+-Wait for the Software to finish generating the cards.
+
+Saving Branch Details
+-Fill up all the Fields.
+-Click the Save button.

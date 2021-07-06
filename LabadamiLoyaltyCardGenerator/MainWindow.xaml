@@ -1,0 +1,141 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabadamiLoyaltyCardGenerator"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="Labadami Loyalty Card Generator" 
+        Height="650" Width="1000"
+        WindowStyle="ThreeDBorderWindow"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="DodgerBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Branch" VerticalAlignment="Center" Margin="10"
+                       Foreground="White" FontSize="18" FontWeight="Bold"/>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="txtBranch" Margin="5" FontSize="14" 
+                         Height="30" VerticalContentAlignment="Center" 
+                         Background="White"/>
+                <Button Name="btnSelectBranch" Grid.Column="1" Content="Select" 
+                        Height="30" Margin="5" FontSize="14"/>
+            </Grid>
+
+
+            <TextBlock Text="Address" Grid.Row="1" VerticalAlignment="Center" 
+                       Margin="10" Foreground="White" FontSize="18" FontWeight="Bold"/>
+            <TextBox Name="txtAddress" Grid.Row="1" Grid.Column="1" Margin="5" 
+                     FontSize="14" Height="90" Background="White" AcceptsReturn="True" 
+                     TextWrapping="Wrap"/>
+
+            <TextBlock Text="CP Number" Grid.Row="2" VerticalAlignment="Center" 
+                       Margin="10" Foreground="White" FontSize="18" FontWeight="Bold"/>
+            <TextBox Name="txtCPNumber" Grid.Row="2" Grid.Column="1" Margin="5" 
+                     FontSize="14" Height="30" VerticalContentAlignment="Center" 
+                     Background="White" Text=""/>
+
+            <TextBlock Text="Output Path" Grid.Row="3" VerticalAlignment="Center" 
+                       Margin="10" Foreground="White" FontSize="16" FontWeight="Bold"/>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="txtOutputPath" IsReadOnly="True" Margin="5" FontSize="14" 
+                         Height="30" VerticalContentAlignment="Center" 
+                         Background="White"/>
+                <Button Name="btnBrowseOutputPath" Grid.Column="1" Content="Browse" 
+                        Height="30" Margin="5" FontSize="14"/>
+            </Grid>
+
+            <TextBlock Text="No. of Card" Grid.Row="4" VerticalAlignment="Center" 
+                       Margin="10" Foreground="White" FontSize="18" FontWeight="Bold"/>
+            <TextBox Name="txtCard" Grid.Row="4" Grid.Column="1" Margin="5" PreviewTextInput="NumberVailidationTextBox"
+                     FontSize="14" Height="30" VerticalContentAlignment="Center" 
+                     Background="White" Text="100"/>
+
+            <Button Name="btnGenerate" Content="GENERATE" Grid.Row="5" Grid.ColumnSpan="2"
+                        Height="40" Margin="5" FontSize="14" VerticalAlignment="Top"/>
+            <Button Name="btnSave" Content="SAVE" Grid.Row="6" Grid.ColumnSpan="2"
+                        Height="40" Margin="5" FontSize="14" VerticalAlignment="Top"/>
+
+            <Grid Name="gridStatus" Grid.Row="7" Grid.ColumnSpan="2" Background="White" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Image Name="imgLoading" gif:ImageBehavior.AnimatedSource="/Resources/hourglass.gif" Width="100"/>
+
+                <TextBlock Name="lblStatus" Text="Generating 1 of 100 Loyalty Cards..." Grid.Row="1" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1" Background="LightGray">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Name="Imgfront" SnapsToDevicePixels="True" Stretch="Uniform" 
+               HorizontalAlignment="Center" MaxWidth="450" Source="/Resources/Front.png"/>
+
+            <Image Name="ImgQR" SnapsToDevicePixels="True" Stretch="Uniform" 
+               HorizontalAlignment="Center" Width="130" Height="130" 
+                   Margin="230,-30,0,0">
+                <Image.Source>
+                    <BitmapImage UriSource="/Resources/QR.jpg" 
+                             DecodePixelWidth="300"/>
+                </Image.Source>
+            </Image>
+
+            <TextBlock Name="lblBranch" Text="SUMULONG" Margin="-70,0,0,0" Width="150"
+                       Height="25" FontSize="18" FontWeight="Bold" FontFamily="Verdana"
+                       TextAlignment="Center"
+                       />
+
+            <TextBlock Name="lblAddress" Margin="-80,70,0,0" Width="160px" Height="50px"
+                       FontSize="10" FontWeight="Bold" FontFamily="Verdana" 
+                       TextWrapping="Wrap" TextAlignment="Center">
+                226 Sumulong Highway, Brgy. Mambugan Antipolo City, 
+                Rizal Philippines, 1870 asd f
+            </TextBlock>
+
+            <TextBlock Name="lblCPNumber" Text="09675198479 | 0285718622" 
+                       Margin="-80,150,0,0" Width="180"
+                       Height="25" FontSize="10" FontWeight="Bold" FontFamily="Verdana"
+                       TextAlignment="Center"
+                       />
+
+            <Image Name="Imgback" Grid.Row="1" SnapsToDevicePixels="True" Stretch="Uniform" 
+               HorizontalAlignment="Center" MaxWidth="450" Source="/Resources/back.jpg"/>
+        </Grid>
+    </Grid>
+</Window>
